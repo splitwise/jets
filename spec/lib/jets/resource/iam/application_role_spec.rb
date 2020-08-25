@@ -18,10 +18,10 @@ describe Jets::Resource::Iam::ApplicationRole do
 
         expect(role.definition[role.definition.keys.first]).to match(
           {type: 'AWS::IAM::Role',
-          properties: hash_including(
-            permissions_boundary: /arn:aws.*#{permissions_boundary}/,
-            managed_policy_arns: match_array(/arn:aws.*#{managed_iam_policy}/)
-          )}
+           properties: hash_including(
+             permissions_boundary: /arn:aws.*#{permissions_boundary}/,
+             managed_policy_arns: match_array(/arn:aws.*#{managed_iam_policy}/)
+           )}
         )
       end
     end
