@@ -1,6 +1,6 @@
 module Jets::Resource::Iam
   module BaseRoleDefinition
-    attr_reader :policy_definitions, :managed_policy_definitions
+    attr_reader :policy_definitions, :managed_policy_definitions, :permissions_boundary
 
     def definition
       logical_id = role_logical_id
@@ -19,7 +19,7 @@ module Jets::Resource::Iam
                 principal: {service: ["lambda.amazonaws.com"]},
                 action: ["sts:AssumeRole"]}
               ]
-            }
+            },
           }
         }
       }
@@ -33,6 +33,10 @@ module Jets::Resource::Iam
         definition[logical_id][:properties][:managed_policy_arns] = managed_policy_arns
       end
 
+      unless permissions_boundary_arn.nil?
+        definition[logical_id][:properties][:permissions_boundary] = permissions_boundary_arn
+      end
+
       definition
     end
 
@@ -42,6 +46,10 @@ module Jets::Resource::Iam
 
     def managed_policy_arns
       ManagedPolicy.new(@managed_policy_definitions.flatten.uniq).arns
+    end
+
+    def permissions_boundary_arn
+      PermissionsBoundary.new(@permissions_boundary).arn
     end
   end
 end

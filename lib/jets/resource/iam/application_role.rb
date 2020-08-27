@@ -8,6 +8,8 @@ module Jets::Resource::Iam
 
       @managed_policy_definitions = Jets.config.managed_iam_policy # config.managed_iam_policy contains definitions
       @managed_policy_definitions = @managed_policy_definitions ? [@managed_policy_definitions].flatten : []
+
+      @permissions_boundary = Jets.config.permissions_boundary
     end
 
     def role_logical_id
