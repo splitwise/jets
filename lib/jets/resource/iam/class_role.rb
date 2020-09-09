@@ -6,6 +6,7 @@ module Jets::Resource::Iam
       @app_class = app_class.to_s # IE: PostsController, HardJob, Hello, HelloFunction
       @policy_definitions = lookup_iam_policies
       @managed_policy_definitions = lookup_managed_iam_policies
+      @permissions_boundary = Jets.config.permissions_boundary
     end
 
     def role_logical_id
