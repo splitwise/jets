@@ -8,15 +8,7 @@ module Jets::Resource::Iam
     end
 
     def arn
-      standardize(definition)
-    end
-    memoize :arn # only process arn once
-
-    # AmazonEC2ReadOnlyAccess => arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
-    def standardize(definition)
-      return definition if definition.nil? || definition.include?('iam::aws:policy')
-
-      "arn:aws:iam::aws:policy/#{definition}"
+      definition
     end
   end
 end
