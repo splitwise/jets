@@ -5,8 +5,8 @@ describe Jets::Resource::Iam::ManagedPolicy do
 
   context "single string" do
     let(:definition) { "AmazonEC2ReadOnlyAccess" }
-    it "builds the resource definition" do
-      expect(permissions_boundary.arn).to eq "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+    it "does not prepend anything" do
+      expect(permissions_boundary.arn).to eq definition
     end
   end
 
