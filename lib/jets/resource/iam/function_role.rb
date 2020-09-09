@@ -6,6 +6,7 @@ module Jets::Resource::Iam
       @task = task
       @policy_definitions = task.iam_policy || [] # iam_policy contains policy definitions
       @managed_policy_definitions = task.managed_iam_policy || [] # managed_iam_policy contains policy definitions
+      @permissions_boundary = Jets.config.permissions_boundary
     end
 
     def role_logical_id
