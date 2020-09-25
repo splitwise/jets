@@ -17,7 +17,7 @@ class Jets::Controller
     #  render json: {my: "data"}
     #  render text: "plain text"
     def render(options={}, rest={})
-      raise "DoubleRenderError" if @rendered
+      raise "DoubleRenderError" if defined?(@rendered) && @rendered
 
       if options.is_a?(Symbol) or options.is_a?(String)
         options = normalize_options(options, rest)
