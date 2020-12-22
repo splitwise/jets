@@ -17,6 +17,8 @@ module Jets::Builders
     #
     # For Lambda Layer structure
     def consolidate_gems_to_opt
+      puts '============'
+      puts Jets::Gems.ruby_folder
       src = "#{stage_area}/code/vendor/gems/ruby/#{Jets::Gems.ruby_folder}"
       dest = "#{stage_area}/opt/ruby/gems/#{Jets::Gems.ruby_folder}"
       rsync_and_link(src, dest)
