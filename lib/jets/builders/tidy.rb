@@ -81,7 +81,7 @@ module Jets::Builders
     # Reason do not remove the cache folder generally is because some gems have
     # actual cache folders that they used.
     def remove_gem_cache
-      cache_path = "#{@project_root}/vendor/gems/ruby/#{Jets.ruby_folder}/cache"
+      cache_path = "#{@project_root}/vendor/gems/ruby/#{Jets::Gems.ruby_folder}/cache"
       FileUtils.rm_rf(cache_path)
     end
 
