@@ -375,8 +375,8 @@ module Jets::Builders
     def check_ruby_version
       unless ruby_version_supported?
         puts "You are using Ruby version #{RUBY_VERSION} which is not supported by Jets."
-        ruby_variant = Jets::RUBY_VERSION.split('.')[0..1].join('.') + '.x'
-        abort("Jets uses Ruby #{Jets::RUBY_VERSION}.  You should use a variant of Ruby #{ruby_variant}".color(:red))
+        ruby_variant = RUBY_VERSION.split('.')[0..1].join('.') + '.x'
+        abort("Jets uses Ruby #{RUBY_VERSION}.  You should use a variant of Ruby #{ruby_variant}".color(:red))
       end
     end
 
@@ -390,7 +390,7 @@ module Jets::Builders
       pattern = /(\d+)\.(\d+)\.(\d+)/
       md = RUBY_VERSION.match(pattern)
       ruby = {major: md[1], minor: md[2]}
-      md = Jets::RUBY_VERSION.match(pattern)
+      md = RUBY_VERSION.match(pattern)
       jets = {major: md[1], minor: md[2]}
 
       ruby[:major] == jets[:major] && ruby[:minor] == jets[:minor]

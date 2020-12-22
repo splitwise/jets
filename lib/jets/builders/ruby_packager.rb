@@ -99,7 +99,7 @@ module Jets::Builders
     # The lambda server only has ruby 2.5.0 installed.
     def reconfigure_ruby_version
       ruby_version = "#{@full_app_root}/.ruby-version"
-      IO.write(ruby_version, Jets::RUBY_VERSION)
+      IO.write(ruby_version, RUBY_VERSION)
     end
 
     # When using submodules, bundler leaves old submodules behind. Over time this inflates
