@@ -26,7 +26,6 @@ module Jets::Builders
     end
 
     def build
-      check_ruby_version
       @version_purger.purge
       cache_check_message
 
