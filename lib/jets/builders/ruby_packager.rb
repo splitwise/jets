@@ -62,7 +62,7 @@ module Jets::Builders
       Bundler.with_unbundled_env do
         sh(
           "cd #{cache_area} && " \
-          "env bundle install --path #{cache_area}/vendor/gems --without development test"
+          "env BUNDLE_FORCE_RUBY_PLATFORM=true bundle install --path #{cache_area}/vendor/gems --without development test"
         )
       end
 
