@@ -14,7 +14,7 @@ module Jets::Resource::Iam
 
     # AmazonEC2ReadOnlyAccess => arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
     def standardize(definition)
-      return definition if definition.include?('iam::aws:policy')
+      return definition if definition.match?(/iam::[0-9a-z]+:policy/i)
 
       "arn:aws:iam::aws:policy/#{definition}"
     end

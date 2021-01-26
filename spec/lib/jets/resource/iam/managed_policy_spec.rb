@@ -28,4 +28,13 @@ describe Jets::Resource::Iam::ManagedPolicy do
       ]
     end
   end
+
+  context "customer-managed policy" do
+    let(:definitions) { ["arn:aws:iam::1828372:policy/MyCustomerManagedPolicy"] }
+    it "provides the iam managed policy arn" do
+      expect(managed_policy.arns).to eq [
+        "arn:aws:iam::1828372:policy/MyCustomerManagedPolicy",
+      ]
+    end
+  end
 end
